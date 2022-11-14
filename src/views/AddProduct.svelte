@@ -13,7 +13,7 @@
 
   $: submit = async () => {
     const res = await axios.post(
-      "http://localhost:8080/product/",
+      "https://coderhouse-radzik-final-back.herokuapp.com/product/",
       {
         name,
         thumbnail,

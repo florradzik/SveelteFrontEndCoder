@@ -5,15 +5,17 @@
   let orders = []
   import { onMount } from "svelte"
   const getOrders = async () => {
-    let request = await axios.get("http://localhost:8080/order/", {
-      headers: {
-        token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzcxNTU5ZTQ1YWYxNTJhMmM4NjRjZjEiLCJpYXQiOjE2NjgzNzUwMzEsImV4cCI6MTY2ODQ2MTQzMX0.mKtmoGGWbLv-wcuaDdXsOHNkKdyxc4soVu5AHzXN70Q",
-      },
-    })
+    let request = await axios.get(
+      "https://coderhouse-radzik-final-back.herokuapp.com/order/",
+      {
+        headers: {
+          token:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzcxNTU5ZTQ1YWYxNTJhMmM4NjRjZjEiLCJpYXQiOjE2NjgzNzUwMzEsImV4cCI6MTY2ODQ2MTQzMX0.mKtmoGGWbLv-wcuaDdXsOHNkKdyxc4soVu5AHzXN70Q",
+        },
+      }
+    )
 
     if (request.status == 200) orders = request.data
-    console.log(orders)
     //else load login page
   }
 

@@ -35,19 +35,22 @@
   //   $: messages = [...messages, message]
 
   const getMessages = async () => {
-    let request = await axios.get("http://localhost:8080/message/", {
-      headers: {
-        token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzcxNTU5ZTQ1YWYxNTJhMmM4NjRjZjEiLCJpYXQiOjE2NjgzNzIwMDksImV4cCI6MTY2ODQ1ODQwOX0.3Px-tjVEg7DK1b9WVzhz5q0DcrJZ9eTHHvOlnDiF7E0",
-      },
-    })
+    let request = await axios.get(
+      "https://coderhouse-radzik-final-back.herokuapp.com/message/",
+      {
+        headers: {
+          token:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzcxNTU5ZTQ1YWYxNTJhMmM4NjRjZjEiLCJpYXQiOjE2NjgzNzIwMDksImV4cCI6MTY2ODQ1ODQwOX0.3Px-tjVEg7DK1b9WVzhz5q0DcrJZ9eTHHvOlnDiF7E0",
+        },
+      }
+    )
     console.log(request)
     if (request.status == 200) messages = request.data
   }
 
   const onSendMessage = async () => {
     let request = await axios.post(
-      "http://localhost:8080/message/",
+      "https://coderhouse-radzik-final-back.herokuapp.com/message/",
       { message },
       {
         headers: {

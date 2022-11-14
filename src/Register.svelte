@@ -13,12 +13,15 @@
   })
 
   $: submit = async () => {
-    const res = await axios.post("http://localhost:8080/register", {
-      name,
-      username,
-      password,
-      avatar,
-    })
+    const res = await axios.post(
+      "https://coderhouse-radzik-final-back.herokuapp.com/register",
+      {
+        name,
+        username,
+        password,
+        avatar,
+      }
+    )
 
     if (res.status == 200) {
       window.location.href = "/"

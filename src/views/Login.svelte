@@ -5,21 +5,24 @@
   let username, password
 
   const submit = async () => {
-    const res = await axios.post("http://localhost:8080/login", {
-      username,
-      password,
-    })
+    const res = await axios.post(
+      "https://coderhouse-radzik-final-back.herokuapp.com/login",
+      {
+        username,
+        password,
+      }
+    )
     console.log(res.status)
-    // if (res.status == 200) {
-    //   localStorage.setItem(
-    //     "user",
-    //     JSON.stringify({
-    //       user: res.data.user.username,
-    //       role: res.data.user.role,
-    //       token: res.data.token,
-    //     })
-    //   )
-    // } else console.log(res)
+    if (res.status == 200) {
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          user: res.data.user.username,
+          role: res.data.user.role,
+          token: res.data.token,
+        })
+      )
+    } else console.log(res)
   }
 </script>
 

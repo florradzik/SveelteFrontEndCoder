@@ -14,19 +14,22 @@
   let cart
   import { onMount } from "svelte"
   const getCart = async () => {
-    let request = await axios.get("http://localhost:8080/cart/", {
-      headers: {
-        token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzcxNTU5ZTQ1YWYxNTJhMmM4NjRjZjEiLCJpYXQiOjE2NjgzNzIwMDksImV4cCI6MTY2ODQ1ODQwOX0.3Px-tjVEg7DK1b9WVzhz5q0DcrJZ9eTHHvOlnDiF7E0",
-      },
-    })
+    let request = await axios.get(
+      "https://coderhouse-radzik-final-back.herokuapp.com/cart/",
+      {
+        headers: {
+          token:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzcxNTU5ZTQ1YWYxNTJhMmM4NjRjZjEiLCJpYXQiOjE2NjgzNzIwMDksImV4cCI6MTY2ODQ1ODQwOX0.3Px-tjVEg7DK1b9WVzhz5q0DcrJZ9eTHHvOlnDiF7E0",
+        },
+      }
+    )
 
     if (request.status == 200) cart = request.data.cart
   }
 
   const deleteCart = async () => {
     let request = await axios.delete(
-      `http://localhost:8080/cart/?id=${cart.id}`,
+      `https://coderhouse-radzik-final-back.herokuapp.com/cart/?id=${cart.id}`,
       {
         headers: {
           token:
@@ -42,7 +45,7 @@
   const deleteFromCart = async (product) => {
     const toDelete = product.product
     let request = await axios.post(
-      `http://localhost:8080/cart/products/${product._id}`,
+      `https://coderhouse-radzik-final-back.herokuapp.com/cart/products/${product._id}`,
       {
         toDelete,
       },
@@ -58,7 +61,7 @@
 
   const createOrder = async () => {
     let request = await axios.post(
-      `http://localhost:8080/order/`,
+      `https://coderhouse-radzik-final-back.herokuapp.com/order/`,
       { products: cart.products },
       {
         headers: {
